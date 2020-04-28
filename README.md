@@ -1,0 +1,1 @@
+# RbDesignPatterns-Mediator

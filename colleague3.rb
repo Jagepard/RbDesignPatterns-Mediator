@@ -1,0 +1,2 @@
+class Colleague3
+end
