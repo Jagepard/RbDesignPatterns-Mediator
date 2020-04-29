@@ -22,6 +22,7 @@ class Mediator
           method_name         = @listeners[listener_name][1]
 
           listener_class_name.send(method_name, handler)
+          return
       end
       raise "Listener " + listener_name + " does not exist"
     end
