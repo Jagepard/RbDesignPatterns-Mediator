@@ -4,23 +4,24 @@ license https://mit-license.org/ MIT
 =end
 
 require "./mediator"
+require "./handler"
 require "./colleague1"
 require "./colleague2"
 require "./colleague3"
 
-# handler   = Handler.new
+handler   = Handler.new
 mediator  = Mediator.new
 listener1 = Colleague1.new
 listener2 = Colleague2.new
 listener3 = Colleague3.new
 
 begin
-  mediator.add_listener(listener1, "onEvent")
-  mediator.add_listener(listener2, "onEvent")
-  mediator.add_listener(listener3, "onEvent")
+  mediator.add_listener(listener1, "on_event")
+  mediator.add_listener(listener2, "on_event")
+  mediator.add_listener(listener3, "on_event")
   listener1.to_greet(listener2, mediator, handler)
-  # listener2.to_greet(Colleague3::class, mediator, handler)
-  # listener3.to_greet(Colleague1::class, mediator, handler)
+  listener2.to_greet(listener3, mediator, handler)
+  listener3.to_greet(listener1, mediator, handler)
 rescue Exception => e
   puts e.message
   puts e.backtrace.inspect
